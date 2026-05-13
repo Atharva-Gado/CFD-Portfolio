@@ -25,3 +25,40 @@ The solver is developed using a finite-difference formulation on a staggered gri
 ├── figures/
 ├── results/
 └── README.md
+---
+
+# Results
+
+## Velocity Magnitude
+
+![Velocity Magnitude](figures/velocity_magnitude.png)
+
+---
+
+## Streamlines and Velocity Vectors
+
+![Streamlines](figures/streamlines_vectors.png)
+
+---
+
+## U-Velocity Validation Against Ghia et al.
+
+![U Validation](figures/u_centerline_validation.png)
+
+---
+
+## V-Velocity Validation Against Ghia et al.
+
+![V Validation](figures/v_centerline_validation.png)
+
+---
+
+## Pressure Field
+
+![Pressure](figures/pressure_contour.png)
+
+---
+
+## SOR Convergence History
+
+![SOR](figures/sor_convergence.png)
