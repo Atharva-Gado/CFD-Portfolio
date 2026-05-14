@@ -1,19 +1,3 @@
-# 2D Lid-Driven Cavity Solver
-
-This project implements a two-dimensional incompressible Navier–Stokes solver for the lid-driven cavity benchmark problem.
-
-The solver is developed using a finite-difference formulation on a staggered grid. Pressure–velocity coupling is handled using a predictor–corrector method with a Pressure Poisson Equation solved using Successive Over-Relaxation.
-
-## Key Features
-
-- 2D incompressible Navier–Stokes equations
-- Staggered grid arrangement
-- Explicit convection–diffusion predictor step
-- Pressure Poisson Equation for incompressibility
-- SOR-based pressure solver
-- Lid-driven cavity benchmark at Re = 100
-- Validation against Ghia et al. benchmark data
-
 ## Repository Structure
 
 ```text
@@ -25,40 +9,42 @@ The solver is developed using a finite-difference formulation on a staggered gri
 ├── figures/
 ├── results/
 └── README.md
+```
+
 ---
 
-# Results
+## Results
 
-## Velocity Magnitude
+### Velocity Magnitude
 
 ![Velocity Magnitude](figures/velocity_magnitude.png)
 
 ---
 
-## Streamlines and Velocity Vectors
+### Streamlines and Velocity Vectors
 
 ![Streamlines](figures/streamlines_vectors.png)
 
 ---
 
-## U-Velocity Validation Against Ghia et al.
-
-![U Validation](figures/u_centerline_validation.png)
-
----
-
-## V-Velocity Validation Against Ghia et al.
-
-![V Validation](figures/v_centerline_validation.png)
-
----
-
-## Pressure Field
+### Pressure Contour
 
 ![Pressure](figures/pressure_contour.png)
 
 ---
 
-## SOR Convergence History
+### U-Centerline Validation
+
+![U Validation](figures/u_centerline_validation.png)
+
+---
+
+### V-Centerline Validation
+
+![V Validation](figures/v_centerline_validation.png)
+
+---
+
+### SOR Convergence History
 
 ![SOR](figures/sor_convergence.png)
