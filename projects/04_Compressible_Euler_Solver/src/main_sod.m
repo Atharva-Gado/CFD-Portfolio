@@ -147,7 +147,7 @@ subplot(3,1,1)
 plot(x,rho_mac,'LineWidth',2)
 ylabel('\rho')
 grid on
-title('Sod Shock Tube: MacCormack Solution at t = 0.01')
+title('Sod Shock Tube: MacCormack Solution at t = 0.05')
 
 subplot(3,1,2)
 plot(x,u_mac,'LineWidth',2)
@@ -160,4 +160,4 @@ ylabel('p')
 xlabel('x')
 grid on
 
-saveas(gcf, fullfile(output_dir,'sod_maccormack_t001.png'))
+saveas(gcf, fullfile(output_dir,'sod_maccormack_t005.png'))
