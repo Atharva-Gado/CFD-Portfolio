@@ -6,9 +6,6 @@ clear;
 clc;
 close all;
 
-%% Paths
-
-addpath('src')
 
 %% Gas Properties
 
