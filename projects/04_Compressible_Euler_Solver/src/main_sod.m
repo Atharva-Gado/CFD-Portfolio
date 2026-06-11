@@ -32,10 +32,18 @@ dx = x(2)-x(1);
 
 U = primitive_to_conserved(rho,u,p,gamma);
 
+%% CFL Time Step
+
+CFL = 0.5;
+
+dt = compute_timestep(U,gamma,dx,CFL);
+
 %% Display Information
 
 fprintf('Grid Points : %d\n',N);
 fprintf('Grid Spacing: %.6f\n',dx);
+fprintf('CFL Number  : %.2f\n',CFL);
+fprintf('Time Step   : %.8e\n',dt);
 
 %% Plot Initial Condition
 
