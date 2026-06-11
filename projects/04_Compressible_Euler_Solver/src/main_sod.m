@@ -29,6 +29,10 @@ dx = x(2)-x(1);
 
 U = primitive_to_conserved(rho,u,p,gamma);
 
+%% Compute Initial Flux
+
+F = compute_flux(U,gamma);
+
 %% CFL Time Step
 
 CFL = 0.5;
@@ -41,6 +45,8 @@ fprintf('Grid Points : %d\n',N);
 fprintf('Grid Spacing: %.6f\n',dx);
 fprintf('CFL Number  : %.2f\n',CFL);
 fprintf('Time Step   : %.8e\n',dt);
+fprintf('Initial left momentum flux : %.4f\n',F(2,1));
+fprintf('Initial right momentum flux: %.4f\n',F(2,end));
 
 %% Plot Initial Condition
 
