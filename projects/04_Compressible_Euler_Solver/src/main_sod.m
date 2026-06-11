@@ -6,6 +6,10 @@ clear;
 clc;
 close all;
 
+%% Paths
+
+addpath('src')
+
 %% Gas Properties
 
 gamma = 1.4;
@@ -18,24 +22,11 @@ x_end   = 1.0;
 N = 200;
 
 x = linspace(x_start,x_end,N);
-
 dx = x(2)-x(1);
 
-%% Primitive Variables
+%% Initialize Sod Shock Tube
 
-rho = zeros(size(x));
-u   = zeros(size(x));
-p   = zeros(size(x));
-
-%% Sod Shock Tube Initial Condition
-
-rho(x < 0.5) = 1.0;
-rho(x >= 0.5) = 0.125;
-
-u(:) = 0.0;
-
-p(x < 0.5) = 1.0;
-p(x >= 0.5) = 0.1;
+[rho,u,p] = initialize_sod(x);
 
 %% Convert to Conserved Variables
 
@@ -69,4 +60,10 @@ grid on
 
 %% Save Figure
 
-saveas(gcf,'results/figures/sod_initial_condition.png')
+output_dir = fullfile('results','figures');
+
+if ~exist(output_dir,'dir')
+    mkdir(output_dir);
+end
+
+saveas(gcf, fullfile(output_dir,'sod_initial_condition.png'))
