@@ -29,6 +29,12 @@ dx = x(2)-x(1);
 
 U = primitive_to_conserved(rho,u,p,gamma);
 
+%% CFL Time Step
+
+CFL = 0.5;
+
+dt = compute_timestep(U,gamma,dx,CFL);
+
 %% Compute Initial Flux
 
 F = compute_flux(U,gamma);
@@ -39,11 +45,12 @@ RHS = compute_rhs(F,dx);
 
 fprintf('Maximum RHS magnitude: %.4f\n',max(abs(RHS(:))));
 
-%% CFL Time Step
+%% One Explicit Euler Update
 
-CFL = 0.5;
+U_new = U + dt * RHS;
 
-dt = compute_timestep(U,gamma,dx,CFL);
+[rho_new,u_new,p_new] = conserved_to_primitive(U_new,gamma);
+
 
 %% Display Information
 
@@ -75,6 +82,34 @@ ylabel('p')
 xlabel('x')
 grid on
 
+%% Plot One-Step Evolution
+
+figure('Position',[150 150 1000 700])
+
+subplot(3,1,1)
+plot(x,rho,'LineWidth',2)
+hold on
+plot(x,rho_new,'--','LineWidth',2)
+ylabel('\rho')
+grid on
+legend('Initial','After One Step')
+title('Sod Shock Tube: One Explicit Euler Step')
+
+subplot(3,1,2)
+plot(x,u,'LineWidth',2)
+hold on
+plot(x,u_new,'--','LineWidth',2)
+ylabel('u')
+grid on
+
+subplot(3,1,3)
+plot(x,p,'LineWidth',2)
+hold on
+plot(x,p_new,'--','LineWidth',2)
+ylabel('p')
+xlabel('x')
+grid on
+
 %% Save Figure
 
 output_dir = fullfile('results','figures');
@@ -84,3 +119,4 @@ if ~exist(output_dir,'dir')
 end
 
 saveas(gcf, fullfile(output_dir,'sod_initial_condition.png'))
+saveas(gcf, fullfile(output_dir,'sod_one_step_euler.png'))
