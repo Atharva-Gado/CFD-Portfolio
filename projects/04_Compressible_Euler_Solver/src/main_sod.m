@@ -33,6 +33,12 @@ U = primitive_to_conserved(rho,u,p,gamma);
 
 F = compute_flux(U,gamma);
 
+%% Compute RHS
+
+RHS = compute_rhs(F,dx);
+
+fprintf('Maximum RHS magnitude: %.4f\n',max(abs(RHS(:))));
+
 %% CFL Time Step
 
 CFL = 0.5;
