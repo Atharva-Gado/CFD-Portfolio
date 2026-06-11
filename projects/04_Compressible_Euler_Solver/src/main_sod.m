@@ -1,21 +1,31 @@
 %% Project 04
 % 1D Compressible Euler Solver
-% Sod Shock Tube Initialization
+% Sod Shock Tube Driver
 
 clear;
 clc;
 close all;
 
+%% Output Directory
+
+output_dir = fullfile('results','figures');
+
+if ~exist(output_dir,'dir')
+    mkdir(output_dir);
+end
 
 %% Gas Properties
 
 gamma = 1.4;
 
+%% Numerical Parameters
+
+CFL = 0.2;
+
 %% Computational Domain
 
 x_start = 0.0;
 x_end   = 1.0;
-
 N = 200;
 
 x = linspace(x_start,x_end,N);
@@ -29,37 +39,52 @@ dx = x(2)-x(1);
 
 U = primitive_to_conserved(rho,u,p,gamma);
 
-%% CFL Time Step
+%% Initial CFL Time Step
 
-CFL = 0.5;
+dt_initial = compute_timestep(U,gamma,dx,CFL);
 
-dt = compute_timestep(U,gamma,dx,CFL);
-
-%% Compute Initial Flux
+%% Compute Initial Flux and RHS
 
 F = compute_flux(U,gamma);
-
-%% Compute RHS
-
 RHS = compute_rhs(F,dx);
 
-fprintf('Maximum RHS magnitude: %.4f\n',max(abs(RHS(:))));
+%% One Explicit Euler Update Diagnostic
 
-%% One Explicit Euler Update
-
-U_new = U + dt * RHS;
-
+U_new = U + dt_initial * RHS;
 [rho_new,u_new,p_new] = conserved_to_primitive(U_new,gamma);
-
 
 %% Display Information
 
 fprintf('Grid Points : %d\n',N);
 fprintf('Grid Spacing: %.6f\n',dx);
 fprintf('CFL Number  : %.2f\n',CFL);
-fprintf('Time Step   : %.8e\n',dt);
+fprintf('Initial Time Step: %.8e\n',dt_initial);
+fprintf('Maximum RHS magnitude: %.4f\n',max(abs(RHS(:))));
 fprintf('Initial left momentum flux : %.4f\n',F(2,1));
 fprintf('Initial right momentum flux: %.4f\n',F(2,end));
+
+%% Time Integration Using MacCormack Scheme
+
+t = 0.0;
+t_end = 0.05;
+
+U_mac = U;
+
+while t < t_end
+
+    dt = compute_timestep(U_mac,gamma,dx,CFL);
+
+    if t + dt > t_end
+        dt = t_end - t;
+    end
+
+    U_mac = maccormack_step(U_mac,gamma,dx,dt);
+
+    t = t + dt;
+
+end
+
+[rho_mac,u_mac,p_mac] = conserved_to_primitive(U_mac,gamma);
 
 %% Plot Initial Condition
 
@@ -82,7 +107,9 @@ ylabel('p')
 xlabel('x')
 grid on
 
-%% Plot One-Step Evolution
+saveas(gcf, fullfile(output_dir,'sod_initial_condition.png'))
+
+%% Plot One-Step Evolution Diagnostic
 
 figure('Position',[150 150 1000 700])
 
@@ -110,13 +137,27 @@ ylabel('p')
 xlabel('x')
 grid on
 
-%% Save Figure
-
-output_dir = fullfile('results','figures');
-
-if ~exist(output_dir,'dir')
-    mkdir(output_dir);
-end
-
-saveas(gcf, fullfile(output_dir,'sod_initial_condition.png'))
 saveas(gcf, fullfile(output_dir,'sod_one_step_euler.png'))
+
+%% Plot MacCormack Result
+
+figure('Position',[200 200 1000 700])
+
+subplot(3,1,1)
+plot(x,rho_mac,'LineWidth',2)
+ylabel('\rho')
+grid on
+title('Sod Shock Tube: MacCormack Solution at t = 0.01')
+
+subplot(3,1,2)
+plot(x,u_mac,'LineWidth',2)
+ylabel('u')
+grid on
+
+subplot(3,1,3)
+plot(x,p_mac,'LineWidth',2)
+ylabel('p')
+xlabel('x')
+grid on
+
+saveas(gcf, fullfile(output_dir,'sod_maccormack_t001.png'))
