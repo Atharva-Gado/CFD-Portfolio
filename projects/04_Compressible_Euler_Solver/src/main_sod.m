@@ -216,3 +216,4 @@ xlabel('x')
 grid on
 
 saveas(gcf, fullfile(output_dir,'sod_maccormack_vs_rusanov.png'))
+fprintf('Saved comparison figure successfully\n');
