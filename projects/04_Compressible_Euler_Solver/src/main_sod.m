@@ -6,6 +6,9 @@ clear;
 clc;
 close all;
 
+project_root = fileparts(fileparts(mfilename('fullpath')));
+cd(project_root);
+
 %% Output Directory
 
 output_dir = fullfile('results','figures');

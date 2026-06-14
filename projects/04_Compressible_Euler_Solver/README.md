@@ -1,23 +1,36 @@
-# Project 04: 1D Compressible Euler Solver
+# Project 04: 1D Compressible Euler Solver — Shock Capturing, Scheme Comparison, and Grid Verification
 
 ## Overview
 
-This project develops a 1D compressible Euler solver from scratch in MATLAB to study numerical methods for shock-dominated flows.
+This project develops a 1D compressible Euler solver from scratch in MATLAB to investigate numerical methods for shock-dominated flows.
 
-The solver is tested on the classical Sod shock tube problem and serves as a foundation for understanding finite-volume methods, shock-capturing schemes, and compressible CFD solver development.
+Using the classical Sod shock tube problem, the project explores the complete solver-development workflow: conservative formulations, flux computations, time integration schemes, shock stabilization techniques, finite-volume shock-capturing methods, and solution verification through grid refinement studies.
 
 ---
 
-## What Was Implemented
+## Numerical Methods Implemented
 
-* Primitive ↔ Conserved variable conversion
-* Euler flux computation
-* CFL-based adaptive time stepping
-* Flux-gradient evaluation
-* Explicit Euler update (diagnostic)
-* MacCormack predictor-corrector scheme
-* Artificial viscosity stabilization
-* Rusanov (Local Lax-Friedrichs) flux solver
+### Governing Equations
+
+* 1D Compressible Euler Equations
+* Conservative Variable Formulation
+
+### Core Solver Components
+
+* Primitive ↔ Conserved Variable Conversion
+* Euler Flux Computation
+* CFL-Based Adaptive Time Stepping
+* Flux Gradient Evaluation
+
+### Time Integration Schemes
+
+* Explicit Euler Update (Diagnostic)
+* MacCormack Predictor-Corrector Scheme
+* Artificial Viscosity Stabilization
+
+### Shock-Capturing Method
+
+* Rusanov (Local Lax-Friedrichs) Flux Solver
 
 ---
 
@@ -30,15 +43,23 @@ Initial conditions:
 | Left   | 1.0     | 0.0      | 1.0      |
 | Right  | 0.125   | 0.0      | 0.1      |
 
+The Sod shock tube provides a canonical benchmark for compressible flow solvers and contains a rarefaction wave, contact discontinuity, and shock wave.
+
 ---
 
 ## Key Findings
 
-The raw MacCormack scheme produced oscillations near the shock discontinuity, including nonphysical pressure and density behavior.
+### MacCormack Scheme
 
-Adding artificial viscosity stabilized the solution but increased numerical diffusion.
+The raw MacCormack scheme produced oscillations near the discontinuity, resulting in nonphysical pressure and density behavior.
 
-The Rusanov solver provided a more robust shock-capturing formulation using interface fluxes and characteristic wave speeds.
+### Artificial Viscosity
+
+Artificial viscosity successfully stabilized the solution but introduced additional numerical diffusion.
+
+### Rusanov Flux
+
+The Rusanov solver provided a more robust shock-capturing formulation based on interface fluxes and characteristic wave speeds.
 
 ---
 
@@ -56,16 +77,41 @@ The Rusanov solver provided a more robust shock-capturing formulation using inte
 
 ![MacCormack](results/figures/sod_maccormack_t005.png)
 
-### MacCormack vs Rusanov
+### MacCormack vs Rusanov Comparison
 
 ![Comparison](results/figures/sod_maccormack_vs_rusanov.png)
 
 ---
 
-## Next Steps
+## Verification: Grid Convergence Study
 
-* Validation against the exact Sod solution
-* Error norm evaluation
-* Roe flux implementation
-* Grid convergence study
-* Quasi-1D nozzle flow solver
+A grid refinement study was performed using the Rusanov flux solver with:
+
+* N = 100
+* N = 200
+* N = 400
+
+The results demonstrate convergence of density, velocity, and pressure profiles with mesh refinement and reduced numerical diffusion at higher resolutions.
+
+![Grid Convergence](results/figures/rusanov_grid_convergence.png)
+
+---
+
+## Lessons Learned
+
+This project highlighted several important concepts in compressible CFD:
+
+* Stability limitations of higher-order schemes near discontinuities
+* The tradeoff between numerical stability and numerical diffusion
+* The role of interface fluxes in finite-volume shock-capturing methods
+* The importance of verification through grid refinement studies
+
+---
+
+## Future Improvements
+
+* Exact Sod/Riemann Solution Validation
+* Error Norm Evaluation (L1, L2)
+* Roe Flux Implementation
+* HLL / HLLC Flux Schemes
+* Quasi-1D Nozzle Flow Solver
