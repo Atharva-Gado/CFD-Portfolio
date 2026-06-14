@@ -31,6 +31,8 @@ N = 200;
 x = linspace(x_start,x_end,N);
 dx = x(2)-x(1);
 
+t_end = 0.05;
+
 %% Initialize Sod Shock Tube
 
 [rho,u,p] = initialize_sod(x);
@@ -66,7 +68,7 @@ fprintf('Initial right momentum flux: %.4f\n',F(2,end));
 %% Time Integration Using MacCormack Scheme
 
 t = 0.0;
-t_end = 0.05;
+
 
 U_mac = U;
 
@@ -85,6 +87,29 @@ while t < t_end
 end
 
 [rho_mac,u_mac,p_mac] = conserved_to_primitive(U_mac,gamma);
+
+%% Time Integration Using Rusanov Flux
+
+t = 0.0;
+
+
+U_rus = U;
+
+while t < t_end
+
+    dt = compute_timestep(U_rus,gamma,dx,CFL);
+
+    if t + dt > t_end
+        dt = t_end - t;
+    end
+
+    U_rus = rusanov_step(U_rus,gamma,dx,dt);
+
+    t = t + dt;
+
+end
+
+[rho_rus,u_rus,p_rus] = conserved_to_primitive(U_rus,gamma);
 
 %% Plot Initial Condition
 
@@ -161,3 +186,33 @@ xlabel('x')
 grid on
 
 saveas(gcf, fullfile(output_dir,'sod_maccormack_t005.png'))
+
+%% Plot MacCormack vs Rusanov
+
+figure('Position',[250 250 1000 700])
+
+subplot(3,1,1)
+plot(x,rho_mac,'LineWidth',2)
+hold on
+plot(x,rho_rus,'--','LineWidth',2)
+ylabel('\rho')
+grid on
+legend('MacCormack + AV','Rusanov')
+title('Sod Shock Tube: MacCormack vs Rusanov')
+
+subplot(3,1,2)
+plot(x,u_mac,'LineWidth',2)
+hold on
+plot(x,u_rus,'--','LineWidth',2)
+ylabel('u')
+grid on
+
+subplot(3,1,3)
+plot(x,p_mac,'LineWidth',2)
+hold on
+plot(x,p_rus,'--','LineWidth',2)
+ylabel('p')
+xlabel('x')
+grid on
+
+saveas(gcf, fullfile(output_dir,'sod_maccormack_vs_rusanov.png'))
