@@ -110,8 +110,8 @@ This project highlighted several important concepts in compressible CFD:
 
 ## Future Improvements
 
-* Exact Sod/Riemann Solution Validation
-* Error Norm Evaluation (L1, L2)
-* Roe Flux Implementation
-* HLL / HLLC Flux Schemes
-* Quasi-1D Nozzle Flow Solver
+- Exact Sod/Riemann solution comparison
+- L1 and L2 error norm analysis
+- Roe flux implementation
+- HLL and HLLC approximate Riemann solvers
+- Quasi-1D nozzle flow solver
