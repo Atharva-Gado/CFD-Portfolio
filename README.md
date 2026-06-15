@@ -18,7 +18,6 @@ The portfolio follows a progression from implementing numerical methods and vali
 * Turbulence & Compressible Flows
 
 ---
-
 ## Projects
 
 ### 01. Lid-Driven Cavity Solver
@@ -27,17 +26,41 @@ A 2D incompressible Navier–Stokes solver developed from scratch using a stagge
 
 **Key Skills:** Numerical Methods, Pressure-Velocity Coupling, CFD Verification, Solver Development
 
+---
+
 ### 02. Numerical Scheme Comparison
 
-Investigation of central differencing and donor-cell schemes for the lid-driven cavity benchmark, including validation against Ghia et al. data and quantitative error analysis.
+Comparison of central differencing and donor-cell schemes for the lid-driven cavity benchmark, including validation against Ghia et al. data and quantitative error analysis.
 
-**Key Skills:** Discretization Schemes, Numerical Diffusion Analysis, Verification & Validation, CFD Accuracy Assessment
+**Key Skills:** Discretization Schemes, Numerical Diffusion Analysis, Verification & Validation
+
+---
 
 ### 03. Schäfer–Turek Cylinder Benchmark (OpenFOAM)
 
-An end-to-end OpenFOAM validation study of the classical Schäfer–Turek 2D-2 benchmark. The project reproduces vortex shedding behind a circular cylinder, combining geometry generation, mesh refinement, transient flow simulation, force-coefficient extraction, FFT-based frequency analysis, and comparison against published benchmark data. Particular emphasis was placed on understanding the relationship between wake dynamics, lift oscillations, and the resulting Strouhal number.
+An OpenFOAM validation study of the classical Schäfer–Turek 2D-2 benchmark featuring vortex shedding analysis, force coefficient extraction, FFT-based frequency analysis, and comparison against published benchmark data.
 
-**Key Skills:** OpenFOAM, blockMesh, snappyHexMesh, Transient CFD, Vortex Shedding, Force Coefficients, FFT Analysis, Verification & Validation, ParaView
+**Key Skills:** OpenFOAM, Transient CFD, Vortex Shedding, FFT Analysis, Verification & Validation
+
+---
+
+### 04. Compressible Euler Solver
+
+A 1D compressible Euler solver developed from scratch in MATLAB to investigate shock-capturing methods using the Sod shock tube problem. The project compares MacCormack and Rusanov schemes, examines numerical stability and diffusion, and includes grid convergence verification.
+
+**Key Skills:** Compressible Flow, Finite Volume Methods, Shock Capturing, Numerical Stability, Solver Development, Grid Verification
+
+---
+
+## Featured Results
+
+### Vortex Shedding Behind a Circular Cylinder
+
+![Vortex Shedding](...)
+
+### Grid Convergence Study – Compressible Euler Solver
+
+![Grid Convergence](projects/04_Compressible_Euler_Solver/results/figures/rusanov_grid_convergence.png)
 
 ---
 
