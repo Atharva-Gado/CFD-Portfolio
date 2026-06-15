@@ -56,7 +56,7 @@ A 1D compressible Euler solver developed from scratch in MATLAB to investigate s
 
 ### Vortex Shedding Behind a Circular Cylinder
 
-![Vortex Shedding](projects/03_OpenFOAM_Schaefer_Turek_2D2_Benchmark/results/animations/vortex_shedding_animation.avi)
+![Vortex Shedding](projects/03_OpenFOAM_Schaefer_Turek_2D2_Benchmark/results/animations/vortex_shedding_animation.gif)
 
 ### Grid Convergence Study – Compressible Euler Solver
 
