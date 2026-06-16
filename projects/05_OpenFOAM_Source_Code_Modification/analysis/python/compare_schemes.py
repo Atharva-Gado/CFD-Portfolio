@@ -4,9 +4,13 @@ from pathlib import Path
 
 root = Path("cases/schemeComparison")
 cases = {
-    "vanAlbada": root / "vanAlbada/postProcessing/sample/0.007/data.xy",
     "upwind": root / "upwind/postProcessing/sample/0.007/data.xy",
     "linear": root / "linear/postProcessing/sample/0.007/data.xy",
+    "Minmod": root / "Minmod/postProcessing/sample/0.007/data.xy",
+    "vanLeer": root / "vanLeer/postProcessing/sample/0.007/data.xy",
+    "vanAlbada": root / "vanAlbada/postProcessing/sample/0.007/data.xy",
+    "SuperBee": root / "SuperBee/postProcessing/sample/0.007/data.xy",
+    "atharvaLimiter": root / "atharvaLimiter/postProcessing/sample/0.007/data.xy",
 }
 
 out_dir = Path("results/figures/schemeComparison")

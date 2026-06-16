@@ -1,0 +1,13 @@
+# OpenFOAM generated files
+[0-9]*.*
+postProcessing/
+constant/polyMesh/
+log.*
+*.eps
+processor*/
+
+# Build output
+Make/
+lnInclude/
+*.o
+*.so
