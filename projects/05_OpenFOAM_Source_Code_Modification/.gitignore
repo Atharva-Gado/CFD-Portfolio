@@ -11,3 +11,9 @@ Make/
 lnInclude/
 *.o
 *.so
+# OpenFOAM generated files
+**/constant/polyMesh/
+**/postProcessing/
+**/0/mag(U)
+processor*/
+log.*

@@ -10,7 +10,6 @@ cases = {
     "vanLeer": root / "vanLeer/postProcessing/sample/0.007/data.xy",
     "vanAlbada": root / "vanAlbada/postProcessing/sample/0.007/data.xy",
     "SuperBee": root / "SuperBee/postProcessing/sample/0.007/data.xy",
-    "atharvaLimiter": root / "atharvaLimiter/postProcessing/sample/0.007/data.xy",
 }
 
 out_dir = Path("results/figures/schemeComparison")

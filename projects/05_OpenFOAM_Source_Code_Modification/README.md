@@ -92,13 +92,9 @@ and loaded at runtime through OpenFOAM's dynamic library system.
 
 The implemented limiter uses a generalized van Albada form:
 
-[
-\phi(r,\beta)
-=============
-
-\frac{r(r+\beta)}
-{r^2+\beta}
-]
+$$
+\phi(r,\beta)=\frac{r(r+\beta)}{r^2+\beta}
+$$
 
 where:
 
