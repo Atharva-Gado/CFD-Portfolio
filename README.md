@@ -52,6 +52,14 @@ A 1D compressible Euler solver developed from scratch in MATLAB to investigate s
 
 ---
 
+### 05. Generalized TVD Flux Limiter Development in OpenFOAM
+
+An OpenFOAM development project focused on TVD flux limiters for compressible shock-capturing simulations. The project involved comparing standard limiter schemes, tracing their implementation through the OpenFOAM source code, developing a custom generalized van Albada limiter in C++, and evaluating its performance on the Sod shock tube benchmark through automated parameter studies.
+
+**Key Skills:** OpenFOAM Development, C++, Finite Volume Methods, TVD Flux Limiters, Shock Capturing, Source Code Analysis, Numerical Methods, Python Automation, Verification & Validation
+
+---
+
 ## Featured Results
 
 ### Vortex Shedding Behind a Circular Cylinder
