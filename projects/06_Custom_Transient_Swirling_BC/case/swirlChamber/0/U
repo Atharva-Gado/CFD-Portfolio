@@ -1,0 +1,35 @@
+FoamFile
+{
+    format      ascii;
+    class       volVectorField;
+    object      U;
+}
+
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform (0 0 0);
+
+boundaryField
+{
+        inlet
+    {
+        type            transientSwirlVelocity;
+        meanVelocity    (1 0 0);
+        amplitude       (0.2 0 0);
+        frequency       5;
+        omega           20;
+        origin          (-0.1 0 0);
+        axis            (1 0 0);
+        value           uniform (1 0 0);
+    }
+
+    outlet
+    {
+        type            zeroGradient;
+    }
+
+    walls
+    {
+        type            noSlip;
+    }
+}

@@ -1,0 +1,8 @@
+Custom transient swirling inlet BC verification
+------------------------------------------------
+
+Number of sampled times: 6
+Maximum axial velocity error: 2.949542e-06
+Mean axial velocity error: 1.417600e-06
+Maximum swirl velocity error: 2.220446e-16
+Mean swirl velocity error: 7.195890e-17

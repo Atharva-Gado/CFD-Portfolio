@@ -1,0 +1,32 @@
+FoamFile
+{
+    format      ascii;
+    class       dictionary;
+    object      functions;
+}
+
+inletLineY
+{
+    type            sets;
+    libs            ("libsampling.so");
+
+    interpolationScheme cellPoint;
+    setFormat       raw;
+
+    sets
+    (
+        inletLineY
+        {
+            type    lineUniform;
+            axis    distance;
+            start   (-0.1 -0.05 0);
+            end     (-0.1  0.05 0);
+            nPoints 51;
+        }
+    );
+
+    fields
+    (
+        U
+    );
+}
