@@ -1,0 +1,13 @@
+Grid convergence metrics based on pressure drop
+------------------------------------------------
+
+Coarse pressure drop: 1.49024000e+00
+Medium pressure drop: 1.52070000e+00
+Fine pressure drop:   1.52749000e+00
+
+r21: 1.472471
+r32: 1.336500
+Observed order p: 4.418873
+Richardson extrapolated pressure drop: 1.53009872e+00
+GCI medium-grid: 0.552941 %
+GCI fine-grid:   0.213481 %

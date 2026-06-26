@@ -18,7 +18,7 @@ boundaryField
         amplitude       (0.2 0 0);
         frequency       5;
         omega           20;
-        origin          (-0.1 0 0);
+        origin          (-0.12 0 0);
         axis            (1 0 0);
         value           uniform (1 0 0);
     }
