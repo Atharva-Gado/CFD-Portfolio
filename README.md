@@ -1,97 +1,206 @@
 # CFD Portfolio
 
-A collection of computational fluid dynamics projects built around a simple question: *what is happening inside the solver?*
+> **A collection of Computational Fluid Dynamics projects focused on numerical methods, CFD solver development, OpenFOAM development, verification & validation, and scientific computing.**
 
-The portfolio follows a progression from implementing numerical methods and validating discretization schemes to reproducing benchmark flows in OpenFOAM and investigating the physics behind the results. Rather than treating CFD as a black box, each project emphasizes understanding the governing equations, numerical algorithms, verification & validation, and the connection between simulation outputs and flow physics.
-
-
-## Technical Areas
-
-* CFD Solver Development
-* Numerical Methods
-* Finite Difference & Finite Volume Methods
-* OpenFOAM
-* Verification & Validation
-* Python & MATLAB Automation
-* Scientific Computing
-* High-Performance Computing (HPC)
-* Turbulence & Compressible Flows
-
----
-## Projects
-
-### 01. Lid-Driven Cavity Solver
-
-A 2D incompressible Navier–Stokes solver developed from scratch using a staggered-grid finite difference formulation, pressure Poisson equation, and SOR-based pressure solution.
-
-**Key Skills:** Numerical Methods, Pressure-Velocity Coupling, CFD Verification, Solver Development
+The objective of this portfolio is not simply to perform CFD simulations, but to understand, implement, verify, and extend the numerical algorithms that underpin modern CFD software.
 
 ---
 
-### 02. Numerical Scheme Comparison
+## Portfolio Philosophy
 
-Comparison of central differencing and donor-cell schemes for the lid-driven cavity benchmark, including validation against Ghia et al. data and quantitative error analysis.
+Modern CFD software is built upon numerical methods, mathematical models, and scientific computing. While commercial and open-source packages provide powerful simulation capabilities, understanding the algorithms that govern their behavior is essential for developing reliable and trustworthy CFD solutions.
 
-**Key Skills:** Discretization Schemes, Numerical Diffusion Analysis, Verification & Validation
+This portfolio documents my progression from developing CFD solvers from first principles to extending OpenFOAM through custom C++ development. Each project emphasizes understanding the governing equations, numerical methods, software implementation, and rigorous verification rather than treating CFD as a black box.
 
----
+The portfolio is organized as a progressive learning pathway:
 
-### 03. Schäfer–Turek Cylinder Benchmark (OpenFOAM)
+1. Developing CFD solvers from first principles.
+2. Investigating numerical discretization methods.
+3. Verifying OpenFOAM against benchmark solutions.
+4. Developing compressible finite-volume solvers.
+5. Extending OpenFOAM through source-code modification.
+6. Developing custom OpenFOAM C++ functionality.
 
-An OpenFOAM validation study of the classical Schäfer–Turek 2D-2 benchmark featuring vortex shedding analysis, force coefficient extraction, FFT-based frequency analysis, and comparison against published benchmark data.
-
-**Key Skills:** OpenFOAM, Transient CFD, Vortex Shedding, FFT Analysis, Verification & Validation
-
----
-
-### 04. Compressible Euler Solver
-
-A 1D compressible Euler solver developed from scratch in MATLAB to investigate shock-capturing methods using the Sod shock tube problem. The project compares MacCormack and Rusanov schemes, examines numerical stability and diffusion, and includes grid convergence verification.
-
-**Key Skills:** Compressible Flow, Finite Volume Methods, Shock Capturing, Numerical Stability, Solver Development, Grid Verification
+Each project builds upon concepts introduced in the previous one, progressing from numerical fundamentals to CFD software development.
 
 ---
 
-### 05. Generalized TVD Flux Limiter Development in OpenFOAM
+# Technical Areas
 
-An OpenFOAM development project focused on TVD flux limiters for compressible shock-capturing simulations. The project involved comparing standard limiter schemes, tracing their implementation through the OpenFOAM source code, developing a custom generalized van Albada limiter in C++, and evaluating its performance on the Sod shock tube benchmark through automated parameter studies.
-
-**Key Skills:** OpenFOAM Development, C++, Finite Volume Methods, TVD Flux Limiters, Shock Capturing, Source Code Analysis, Numerical Methods, Python Automation, Verification & Validation
-
----
-
-## Featured Results
-
-### Vortex Shedding Behind a Circular Cylinder
-
-![Vortex Shedding](projects/03_OpenFOAM_Schaefer_Turek_2D2_Benchmark/results/animations/vortex_shedding_animation.gif)
-
-### Grid Convergence Study – Compressible Euler Solver
-
-![Grid Convergence](projects/04_Compressible_Euler_Solver/results/figures/rusanov_grid_convergence.png)
+- CFD Solver Development
+- Numerical Methods
+- Finite Difference Method (FDM)
+- Finite Volume Method (FVM)
+- OpenFOAM Development (C++)
+- Verification & Validation (V&V)
+- Python Scientific Computing
+- MATLAB Scientific Computing
+- High-Performance Computing (HPC)
+- Compressible and Incompressible Flows
 
 ---
 
-## Purpose of This Portfolio
-
-This repository documents my transition from industrial CFD applications toward deeper work in numerical methods, solver development, scientific computing, and open-source CFD workflows.
-
-Each project is designed to emphasize:
-
-* Understanding of governing equations
-* Numerical implementation
-* Verification and validation
-* Reproducible computational workflows
+# Projects
 
 ---
 
-## About Me
+## 01. Lid-Driven Cavity Solver
 
-Atharva Gado
+A two-dimensional incompressible Navier–Stokes solver developed entirely from scratch using a staggered-grid finite difference formulation. The project implements pressure-velocity coupling using the SIMPLE algorithm and verifies the numerical solution against the benchmark data of Ghia et al.
 
-M.S. Engineering Mechanics (Aerospace)
-University of Wisconsin–Madison
+**Key Skills**
 
-I enjoy building CFD tools almost as much as running them. My background spans industrial CFD, turbomachinery, aerodynamics, and propulsion, but these days I spend a growing amount of time wondering what is happening inside the solver rather than just looking at contours.
+`Finite Difference Method` • `SIMPLE Algorithm` • `Pressure Poisson Solver` • `MATLAB` • `Verification`
 
-Interests include numerical methods, solver development, OpenFOAM, high-performance computing, turbulence, and compressible flows.
+---
+
+## 02. Numerical Scheme Comparison
+
+A systematic investigation of first- and second-order convection discretization schemes for incompressible flow. Numerical diffusion, boundedness, and solution accuracy are evaluated through quantitative comparisons to illustrate the numerical accuracy, stability, and numerical diffusion associated with commonly used spatial discretization schemes.
+
+**Key Skills**
+
+`Upwind` • `Central Difference` • `Hybrid Scheme` • `Numerical Accuracy` • `Verification`
+
+---
+
+## 03. Schaefer–Turek Cylinder Benchmark (OpenFOAM)
+
+Reproduction and verification of the classical Schaefer–Turek benchmark using OpenFOAM. Drag coefficient, lift coefficient, vortex shedding frequency, and Strouhal number are extracted and compared with published benchmark data to demonstrate verification against the literature.
+
+**Key Skills**
+
+`OpenFOAM` • `Benchmark Validation` • `Verification & Validation` • `ParaView` • `Python`
+
+---
+
+## 04. Compressible Euler Solver
+
+A one-dimensional finite-volume Euler solver developed from scratch for Sod's shock tube problem. The implementation employs the explicit MacCormack predictor–corrector scheme to capture shocks, contact discontinuities, and expansion waves in compressible flow.
+
+**Key Skills**
+
+`Compressible Flow` • `Finite Volume Method` • `MacCormack Scheme` • `Shock Capturing`
+
+---
+
+## 05. OpenFOAM Source Code Modification
+
+Investigation of OpenFOAM's numerical discretization framework through source-code tracing and modification of TVD flux limiters. The project traces the numerical discretization pipeline from user dictionaries to the underlying C++ implementation, followed by verification through shock-tube simulations using multiple TVD limiter schemes.
+
+**Key Skills**
+
+`OpenFOAM Development` • `C++` • `TVD Schemes` • `Flux Limiters` • `Source Code Analysis`
+
+---
+
+## 06. Custom Transient Swirling Boundary Condition
+
+Development of a custom OpenFOAM C++ boundary condition for prescribing transient swirling inflow. The implementation is verified against analytical velocity profiles and assessed through a systematic grid-convergence study using Richardson extrapolation and the Grid Convergence Index (GCI).
+
+**Key Skills**
+
+`OpenFOAM Development` • `C++` • `Custom Boundary Conditions` • `Verification & Validation` • `Grid Convergence` • `Richardson Extrapolation` • `GCI`
+
+---
+
+# Featured Results
+
+## OpenFOAM Cylinder Benchmark
+
+<p align="center">
+<img src="projects/03_OpenFOAM_Schaefer_Turek_2D2_Benchmark/results/animations/vortex_shedding_animation.gif" width="800">
+</p>
+
+---
+
+## Compressible Shock Tube Solver
+
+<p align="center">
+<img src="projects/04_Compressible_Euler_Solver/results/figures/sod_maccormack_vs_rusanov.png" width="800">
+</p>
+
+---
+
+## Custom Swirling Boundary Condition
+
+<p align="center">
+<img src="projects/06_Custom_Transient_Swirling_BC/results/figures/visualization/streamlines_velocity.png" width="800">
+</p>
+
+---
+
+## Grid Convergence Study
+
+<p align="center">
+<img src="projects/06_Custom_Transient_Swirling_BC/results/figures/convergence/grid_convergence_pressure_drop.png" width="800">
+</p>
+
+---
+
+# Repository Structure
+
+For detailed implementation, documentation, verification scripts, and simulation cases, see the individual project directories.
+
+---
+
+# Skills Demonstrated
+
+### Numerical Methods & Verification
+
+- Finite Difference Methods
+- Finite Volume Methods
+- Pressure-Velocity Coupling
+- TVD Flux Limiters
+- Shock-Capturing Methods
+- Grid Convergence Studies
+- Richardson Extrapolation
+- Grid Convergence Index (GCI)
+
+### CFD Software Development
+
+- MATLAB
+- Python
+- C++
+- OpenFOAM Development
+- Scientific Computing
+- Solver Verification
+- Boundary Condition Development
+
+### Fluid Mechanics Applications
+
+- Incompressible Flow
+- Compressible Flow
+- Vortex Shedding
+- Swirling Flow
+- Shock Tube Problems
+- Internal Flows
+
+---
+
+# About Me
+
+I am currently pursuing an **M.S. in Engineering Mechanics** at the **University of Wisconsin–Madison**, with research interests centered on computational fluid dynamics, numerical methods, and scientific computing.
+
+This portfolio reflects my approach to learning CFD: understanding how numerical algorithms are formulated, implemented, verified, and ultimately translated into robust and reliable engineering software.
+
+---
+
+# Future Directions
+
+The next phase of this portfolio will focus on advanced CFD software development, including:
+
+- Turbulence model implementation
+- Advanced linear solvers and preconditioning
+- Parallel computing and MPI
+- Adaptive mesh refinement
+- Higher-order finite-volume methods
+- Advanced OpenFOAM development
+
+---
+
+**Atharva Gado**
+
+*M.S. Engineering Mechanics (Computational Fluid Dynamics)*
+
+**University of Wisconsin–Madison**
