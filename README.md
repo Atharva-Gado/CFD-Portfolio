@@ -2,11 +2,11 @@
 
 > **A collection of Computational Fluid Dynamics projects focused on numerical methods, CFD solver development, OpenFOAM development, verification & validation, and scientific computing.**
 
-The objective of this portfolio is not simply to perform CFD simulations, but to understand, implement, verify, and extend the numerical algorithms that underpin modern CFD software.
-
 ---
 
 ## Portfolio Philosophy
+
+The objective of this portfolio is not simply to perform CFD simulations, but to understand, implement, verify, and extend the numerical algorithms that underpin modern CFD software.
 
 Modern CFD software is built upon numerical methods, mathematical models, and scientific computing. While commercial and open-source packages provide powerful simulation capabilities, understanding the algorithms that govern their behavior is essential for developing reliable and trustworthy CFD solutions.
 
@@ -117,7 +117,7 @@ Development of a custom OpenFOAM C++ boundary condition for prescribing transien
 ## Compressible Shock Tube Solver
 
 <p align="center">
-<img src="projects/04_Compressible_Euler_Solver/results/figures/sod_maccormack_vs_rusanov.png" width="800">
+<img src="projects/04_Compressible_Euler_Solver/results/figures/rusanov_grid_convergence.png" width="800">
 </p>
 
 ---
